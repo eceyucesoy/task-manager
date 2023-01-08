@@ -4,7 +4,7 @@ switch($_GET['mode']) {
 
     case 'displayTD':
         if($_POST){
-            $select = "SELECT staff_name, task_id, task_name, status, task_date FROM task INNER JOIN staff ON task.staff_ID=staff.staff_id WHERE status='To Do' ORDER BY task_id DESC ";
+            $select = "SELECT staff_name, staff_surname, task_id, task_name, status, task_date FROM task INNER JOIN staff ON task.staff_ID=staff.staff_id WHERE status='To Do' ORDER BY task_id DESC ";
             $result = mysqli_query($db, $select);
             $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
             $i=0;
@@ -28,7 +28,7 @@ switch($_GET['mode']) {
   <path d='M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15h9.286zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zM.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8H.8z'/>
 </svg></button></div>
 
-<h5 class='card-title'>".$dt['staff_name']."</h5>
+<h5 class='card-title'>".$dt['staff_name']. " " .$dt['staff_surname'] . "</h5>
 <p class='card-text'>".$dt['task_name']."</p>
 <h6 style='text-align: right'>".$dt['task_date']."</h6>
 </div></div> <br>";
@@ -39,7 +39,7 @@ echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><b
 
     case 'displayIP':
         if($_POST){
-            $select = "SELECT staff_name, task_id, task_name, status, task_date FROM task INNER JOIN staff ON task.staff_ID=staff.staff_id WHERE status='In Progress' ORDER BY task_id DESC";
+            $select = "SELECT staff_name, staff_surname, task_id, task_name, status, task_date FROM task INNER JOIN staff ON task.staff_ID=staff.staff_id WHERE status='In Progress' ORDER BY task_id DESC";
             $result = mysqli_query($db, $select);
             $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
             $i=0;
@@ -62,7 +62,7 @@ echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><b
 <button id='btn3' title='cannot be archived' style='color: gray;' class='btn'><svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='currentColor' class='bi bi-archive-fill' viewBox='0 0 16 16'>
   <path d='M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15h9.286zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zM.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8H.8z'/>
 </svg></button></div>
-<h5 class='card-title'>".$dt['staff_name']."</h5>
+<h5 class='card-title'>".$dt['staff_name']. " " .$dt['staff_surname'] . "</h5>
 <p class='card-text'>".$dt['task_name']."</p>
 <h6 style='text-align: right'>".$dt['task_date']."</h6>
 </div></div><br>";
@@ -73,7 +73,7 @@ echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><b
 
     case 'displayDN':
         if($_POST){
-            $select = "SELECT staff_name, task_id, task_name, status, task_date FROM task INNER JOIN staff ON task.staff_ID=staff.staff_id WHERE status='Done' ORDER BY task_id DESC";
+            $select = "SELECT staff_name, staff_surname, task_id, task_name, status, task_date FROM task INNER JOIN staff ON task.staff_ID=staff.staff_id WHERE status='Done' ORDER BY task_id DESC";
             $result = mysqli_query($db, $select);
             $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
             $i=0;
@@ -96,7 +96,7 @@ echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><b
 <button id='btn3' title='archive' data-bs-target='#exampleModalToggle5' data-bs-toggle='modal' onclick='confirmArchive( " .$dt['task_id']." )' style='color: blue;' class='btn'><svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='currentColor' class='bi bi-archive-fill' viewBox='0 0 16 16'>
   <path d='M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15h9.286zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zM.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8H.8z'/>
 </svg></button></div> 
-<h5 class='card-title'>".$dt['staff_name']."</h5>
+<h5 class='card-title'>".$dt['staff_name']. " " .$dt['staff_surname'] . "</h5>
 <p class='card-text'>".$dt['task_name']."</p>
 <h6 style='text-align: right'>".$dt['task_date']."</h6>
 </div></div> <br>";
